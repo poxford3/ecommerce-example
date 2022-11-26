@@ -9,6 +9,7 @@ import Item from "./Item";
 import Discover from "./Discover";
 import Settings from "./Settings";
 import Profile from "./Profile";
+import colors from "../assets/colors";
 
 const Stack = createStackNavigator();
 

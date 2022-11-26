@@ -11,8 +11,6 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import colors from "../assets/colors";
 
 export default function Splash({ navigation }) {
-  // best method of importing fonts:
-  // https://docs.expo.dev/guides/using-custom-fonts/
   const [fontsLoaded] = useFonts({
     "Criteria-CF": require("../assets/fonts/criteria-cf-bold.otf"),
   });
