@@ -14,7 +14,7 @@ export default function Splash({ navigation }) {
   // best method of importing fonts:
   // https://docs.expo.dev/guides/using-custom-fonts/
   const [fontsLoaded] = useFonts({
-    "Criteria-CF": require("../assets/fonts/criteria-cf.otf"),
+    "Criteria-CF": require("../assets/fonts/criteria-cf-bold.otf"),
   });
 
   return (
@@ -27,7 +27,11 @@ export default function Splash({ navigation }) {
           <View style={styles.textContainer}>
             <View style={styles.top}>
               <Text style={styles.text}>NEW</Text>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Draw");
+                }}
+              >
                 <Ionicons name="arrow-forward" size={74} color={colors.white} />
               </TouchableOpacity>
             </View>
@@ -67,6 +71,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.white,
     fontSize: 36,
+    fontWeight: "bold",
     fontFamily: "Criteria-CF",
   },
   textContainer: {
