@@ -53,6 +53,7 @@ export default function Discover({ navigation }) {
       img: require("../assets/glasses.png"),
       price: 160.0,
       clothingName: "Men Hoodie",
+      brand: "Brand1",
     },
     {
       id: 2,
@@ -60,6 +61,7 @@ export default function Discover({ navigation }) {
       img: require("../assets/glasses.png"),
       price: 100.0,
       clothingName: "Autumn yellow hat",
+      brand: "Brand1",
     },
     {
       id: 3,
@@ -67,6 +69,7 @@ export default function Discover({ navigation }) {
       img: require("../assets/glasses.png"),
       price: 130.0,
       clothingName: "Blue jeans",
+      brand: "Brand1",
     },
     {
       id: 4,
@@ -74,6 +77,7 @@ export default function Discover({ navigation }) {
       img: require("../assets/glasses.png"),
       price: 125,
       clothingName: "Black jeans",
+      brand: "Brand2",
     },
     {
       id: 5,
@@ -81,6 +85,7 @@ export default function Discover({ navigation }) {
       img: require("../assets/glasses.png"),
       price: 1205.0,
       clothingName: "Jorts",
+      brand: "Brand3",
     },
   ];
 
@@ -107,7 +112,7 @@ export default function Discover({ navigation }) {
         }}
       >
         <ImageBackground source={item.img} style={styles.clothesImage}>
-          <Ionicons name="heart" size={12} color={colors.primary} />
+          <Ionicons name="heart-outline" size={24} color={colors.primary} />
         </ImageBackground>
         <Text style={styles.clothesText}>{item.clothingName}</Text>
         <Text
@@ -190,11 +195,6 @@ export default function Discover({ navigation }) {
             renderItem={({ item }) => <ClothingItem item={item} />}
           />
         </View>
-        {/* <ClothingItem
-          img={clothesList[0].img}
-          price={clothesList[0].price}
-          clothingName={clothesList[0].clothingName}
-        /> */}
       </View>
     </SafeAreaView>
   );
@@ -229,6 +229,9 @@ const styles = StyleSheet.create({
   clothesImage: {
     height: 140,
     width: 140,
+    padding: 10,
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
   clothesText: {
     marginTop: 5,
