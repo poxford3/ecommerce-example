@@ -54,6 +54,13 @@ export default function Discover({ navigation }) {
       price: 160.0,
       clothingName: "Men Hoodie",
       brand: "Brand1",
+      colors: {
+        red: "#ff0000",
+        green: "#00ff00",
+        blue: "#0000ff",
+      },
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
     {
       id: 2,
@@ -62,6 +69,13 @@ export default function Discover({ navigation }) {
       price: 100.0,
       clothingName: "Autumn yellow hat",
       brand: "Brand1",
+      colors: {
+        red: "#ff0000",
+        green: "#00ff00",
+        blue: "#0000ff",
+      },
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
     {
       id: 3,
@@ -70,6 +84,13 @@ export default function Discover({ navigation }) {
       price: 130.0,
       clothingName: "Blue jeans",
       brand: "Brand1",
+      colors: {
+        red: "#ff0000",
+        green: "#00ff00",
+        blue: "#0000ff",
+      },
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
     {
       id: 4,
@@ -78,6 +99,13 @@ export default function Discover({ navigation }) {
       price: 125,
       clothingName: "Black jeans",
       brand: "Brand2",
+      colors: {
+        red: "#ff0000",
+        green: "#00ff00",
+        blue: "#0000ff",
+      },
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
     {
       id: 5,
@@ -86,6 +114,13 @@ export default function Discover({ navigation }) {
       price: 1205.0,
       clothingName: "Jorts",
       brand: "Brand3",
+      colors: {
+        red: "#ff0000",
+        green: "#00ff00",
+        blue: "#0000ff",
+      },
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
   ];
 
@@ -112,7 +147,10 @@ export default function Discover({ navigation }) {
         }}
       >
         <ImageBackground source={item.img} style={styles.clothesImage}>
-          <Ionicons name="heart-outline" size={24} color={colors.primary} />
+          <TouchableOpacity onPress={() => {}}>
+            {/* will want to set it to make the heart red  */}
+            <Ionicons name="heart-outline" size={24} color={colors.primary} />
+          </TouchableOpacity>
         </ImageBackground>
         <Text style={styles.clothesText}>{item.clothingName}</Text>
         <Text
@@ -224,7 +262,6 @@ const styles = StyleSheet.create({
     height: 240,
     width: screenWidth * 0.5,
     justifyContent: "center",
-    // alignItems: "center",
   },
   clothesImage: {
     height: 140,
