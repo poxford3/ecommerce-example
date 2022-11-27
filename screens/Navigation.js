@@ -42,6 +42,7 @@ export function DrawNavigation() {
         <Drawer.Screen name="Discover" component={Discover} />
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="Settings" component={Settings} />
+        <Drawer.Screen name="Item" component={Item} screenOptions={{}} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

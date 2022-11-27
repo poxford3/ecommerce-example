@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -7,15 +7,135 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  FlatList,
 } from "react-native";
+import { Dimensions } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import colors from "../assets/colors";
 import { useFonts } from "expo-font";
 
+const screenWidth = Dimensions.get("window").width;
+
 export default function Discover({ navigation }) {
+  const [selectedId, setSelectedId] = useState(1);
+
   const [fontsLoaded] = useFonts({
     "Criteria-CF": require("../assets/fonts/criteria-cf-bold.otf"),
   });
+
+  const categories = [
+    {
+      id: 1,
+      title: "New arrivals",
+    },
+    {
+      id: 2,
+      title: "Jeans",
+    },
+    {
+      id: 3,
+      title: "Sneakers",
+    },
+    {
+      id: 4,
+      title: "Jackets",
+    },
+    {
+      id: 5,
+      title: "Shirts",
+    },
+  ];
+
+  const clothesList = [
+    {
+      id: 1,
+      refId: 1,
+      img: require("../assets/glasses.png"),
+      price: 160.0,
+      clothingName: "Men Hoodie",
+    },
+    {
+      id: 2,
+      refId: 1,
+      img: require("../assets/glasses.png"),
+      price: 100.0,
+      clothingName: "Autumn yellow hat",
+    },
+    {
+      id: 3,
+      refId: 2,
+      img: require("../assets/glasses.png"),
+      price: 130.0,
+      clothingName: "Blue jeans",
+    },
+    {
+      id: 4,
+      refId: 2,
+      img: require("../assets/glasses.png"),
+      price: 125,
+      clothingName: "Black jeans",
+    },
+    {
+      id: 5,
+      refId: 2,
+      img: require("../assets/glasses.png"),
+      price: 1205.0,
+      clothingName: "Jorts",
+    },
+  ];
+
+  const CategoryObj = ({ item, borderWidth, textColor }) => {
+    return (
+      <TouchableOpacity onPress={() => setSelectedId(item.id)}>
+        <View style={[styles.catView, { borderBottomWidth: borderWidth }]}>
+          <Text style={[styles.catText, { color: textColor }]}>
+            {item.title}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const ClothingItem = ({ item }) => {
+    return (
+      <TouchableOpacity
+        style={styles.clothesBox}
+        onPress={() => {
+          navigation.navigate("Item", {
+            item: item,
+          });
+        }}
+      >
+        <ImageBackground source={item.img} style={styles.clothesImage}>
+          <Ionicons name="heart" size={12} color={colors.primary} />
+        </ImageBackground>
+        <Text style={styles.clothesText}>{item.clothingName}</Text>
+        <Text
+          style={{ fontWeight: "bold", fontSize: 26 }}
+        >{`$${item.price}`}</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderCat = ({ item }) => {
+    const borderWidth = item.id === selectedId ? 2 : 0;
+    const textColor = item.id === selectedId ? colors.black : colors.primary;
+    // const borderWidth = item.id === selectedId ? 2 : 0;
+
+    return (
+      <CategoryObj
+        item={item}
+        borderWidth={borderWidth}
+        textColor={textColor}
+      />
+    );
+  };
+
+  const filteredClothes = clothesList.filter((x) => x.refId == selectedId);
+
+  useEffect(() => {
+    // console.log(filteredClothes);
+  }, [selectedId]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -54,6 +174,27 @@ export default function Discover({ navigation }) {
             </Text>
           </View>
         </ImageBackground>
+        <View style={styles.catList}>
+          <FlatList
+            data={categories}
+            renderItem={renderCat}
+            extraData={selectedId}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={styles.clothingOptionsView}>
+          <FlatList
+            data={filteredClothes}
+            numColumns={2}
+            renderItem={({ item }) => <ClothingItem item={item} />}
+          />
+        </View>
+        {/* <ClothingItem
+          img={clothesList[0].img}
+          price={clothesList[0].price}
+          clothingName={clothesList[0].clothingName}
+        /> */}
       </View>
     </SafeAreaView>
   );
@@ -62,10 +203,43 @@ export default function Discover({ navigation }) {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: colors.secondary,
+  },
+  catList: {
+    paddingHorizontal: 10,
+    marginTop: 30,
+    height: 50,
+  },
+  catText: {
+    fontSize: 20,
+  },
+  catView: {
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    borderBottomWidth: 2,
+  },
+  clothesBox: {
+    padding: 30,
+    height: 240,
+    width: screenWidth * 0.5,
+    justifyContent: "center",
+    // alignItems: "center",
+  },
+  clothesImage: {
+    height: 140,
+    width: 140,
+  },
+  clothesText: {
+    marginTop: 5,
+    fontSize: 18,
+  },
+  clothingOptionsView: {
+    flex: 1,
   },
   container: {
     flex: 1,
+    backgroundColor: colors.white,
   },
   glassesPic: {
     height: 375,
@@ -97,7 +271,6 @@ const styles = StyleSheet.create({
   imgTxt: {
     flex: 1,
     justifyContent: "flex-end",
-    // alignItems: "flex-",
     paddingLeft: 40,
     paddingBottom: 30,
     backgroundColor: "rgba(11,11,11,.5)",

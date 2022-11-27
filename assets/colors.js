@@ -3,6 +3,7 @@ const colors = {
   primary: "#8b8b8b",
   secondary: "#e9e9e9",
   white: "#fcfcfc",
+  grey: "grey",
 };
 
 export default colors;
