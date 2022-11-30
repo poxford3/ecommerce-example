@@ -19,11 +19,16 @@ import colors from "../assets/colors";
 const screenWidth = Dimensions.get("window").width;
 
 export default function Item({ navigation, route }) {
+  // const declarations
   const [sizeSelected, setSizeSelected] = useState(null);
+  const [moreLessButton, setMoreLessButton] = useState("more detailed");
+  const [numDescriptionLines, setNumDescriptionLines] = useState(3);
+  const [scrollEnabling, setScrollEnabling] = useState(false);
   const [colorSelected, setColorSelected] = useState(null);
 
   const itemInfo = route.params.item;
 
+  // objects
   const sizes = [
     {
       id: 1,
@@ -47,6 +52,7 @@ export default function Item({ navigation, route }) {
     },
   ];
 
+  // custom components
   const SizeListView = ({ item, backgroundColor, textColor }) => {
     return (
       <TouchableOpacity
@@ -58,6 +64,16 @@ export default function Item({ navigation, route }) {
     );
   };
 
+  const ColorListView = ({ color, borderWidth }) => {
+    return (
+      <TouchableOpacity
+        style={[styles.colorList, { color: color, borderWidth: borderWidth }]}
+        onPress={() => setColorSelected(null)}
+      ></TouchableOpacity>
+    );
+  };
+
+  // functions
   const renderSizes = ({ item }) => {
     const backgroundColor =
       item.id == sizeSelected ? colors.black : colors.white;
@@ -72,13 +88,16 @@ export default function Item({ navigation, route }) {
     );
   };
 
-  const ColorListView = ({ color, borderWidth }) => {
-    return (
-      <TouchableOpacity
-        style={[styles.colorList, { color: color, borderWidth: borderWidth }]}
-        onPress={() => setColorSelected(null)}
-      ></TouchableOpacity>
-    );
+  const moreLessFunc = () => {
+    if (numDescriptionLines == 3) {
+      setMoreLessButton("less detailed");
+      setNumDescriptionLines(20);
+      setScrollEnabling(true);
+    } else {
+      setMoreLessButton("more detailed");
+      setNumDescriptionLines(3);
+      setScrollEnabling(false);
+    }
   };
 
   const [fontsLoaded] = useFonts({
@@ -114,8 +133,16 @@ export default function Item({ navigation, route }) {
             <Text style={styles.topText}>{`$${itemInfo.price}`}</Text>
           </View>
           <View style={styles.info}>
-            <Text style={{ color: colors.primary }}>
-              {itemInfo.description}
+            <ScrollView scrollEnabled={scrollEnabling}>
+              <Text
+                numberOfLines={numDescriptionLines}
+                style={{ color: colors.primary }}
+              >
+                {itemInfo.description}
+              </Text>
+            </ScrollView>
+            <Text style={styles.moreLessStyle} onPress={moreLessFunc}>
+              {moreLessButton}
             </Text>
           </View>
         </View>
@@ -168,10 +195,16 @@ const styles = StyleSheet.create({
   imageList: {
     height: 300,
   },
-  info: {},
+  info: {
+    maxHeight: 150,
+  },
   itemHeader: {
     justifyContent: "space-between",
     flexDirection: "row",
+  },
+  moreLessStyle: {
+    fontWeight: "bold",
+    fontFamily: "Criteria-CF",
   },
   selections: {
     marginTop: 20,

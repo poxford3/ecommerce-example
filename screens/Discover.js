@@ -119,8 +119,7 @@ export default function Discover({ navigation }) {
         green: "#00ff00",
         blue: "#0000ff",
       },
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
+      description: "This description is not as big as the rest.",
     },
   ];
 
