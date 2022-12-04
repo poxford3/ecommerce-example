@@ -91,7 +91,7 @@ export default function Item({ navigation, route }) {
   const moreLessFunc = () => {
     if (numDescriptionLines == 3) {
       setMoreLessButton("less detailed");
-      setNumDescriptionLines(20);
+      setNumDescriptionLines(18);
       setScrollEnabling(true);
     } else {
       setMoreLessButton("more detailed");
@@ -156,7 +156,16 @@ export default function Item({ navigation, route }) {
           />
           <FlatList data={itemInfo.colors} />
         </View>
-        <View style={styles.buttons}></View>
+        <View style={styles.buttons}>
+          <TouchableOpacity style={styles.favButton}>
+            <Ionicons name="heart-outline" size={35} color={colors.grey} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buyNowButton}>
+            <Text style={{ color: colors.white, fontFamily: "Criteria-CF" }}>
+              Buy Now
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -165,8 +174,21 @@ export default function Item({ navigation, route }) {
 const styles = StyleSheet.create({
   body: {
     padding: 20,
+    justifyContent: "space-between",
+    flex: 1,
   },
-  buttons: {},
+  buttons: {
+    flexDirection: "row",
+    padding: 10,
+  },
+  buyNowButton: {
+    width: 300,
+    height: 50,
+    marginHorizontal: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colors.black,
+  },
   colorList: {
     height: 30,
     width: 30,
@@ -176,7 +198,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  desrciption: {},
+  desrciption: {
+    fontFamily: "Criteria-CF",
+  },
+  favButton: {
+    height: 50,
+    width: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.lightgrey,
+  },
   header: {
     height: 100,
     justifyContent: "space-between",
@@ -193,7 +224,7 @@ const styles = StyleSheet.create({
     // width: screenWidth,
   },
   imageList: {
-    height: 300,
+    height: 400,
   },
   info: {
     maxHeight: 150,
