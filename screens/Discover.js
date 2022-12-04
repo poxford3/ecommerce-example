@@ -50,7 +50,11 @@ export default function Discover({ navigation }) {
     {
       id: 1,
       refId: 1,
-      img: require("../assets/glasses.png"),
+      imgs: [
+        require("../assets/clothingImages/hoodie1.png"),
+        require("../assets/clothingImages/hoodie2.png"),
+        require("../assets/clothingImages/hoodie3.png"),
+      ],
       price: 160.0,
       clothingName: "Men Hoodie",
       brand: "Brand1",
@@ -65,7 +69,12 @@ export default function Discover({ navigation }) {
     {
       id: 2,
       refId: 1,
-      img: require("../assets/glasses.png"),
+      // img: require("../assets/clothingImages/hoodie1.png"),
+      imgs: [
+        require("../assets/clothingImages/beanie1.png"),
+        require("../assets/clothingImages/beanie2.png"),
+        require("../assets/clothingImages/beanie3.png"),
+      ],
       price: 100.0,
       clothingName: "Autumn yellow hat",
       brand: "Brand1",
@@ -80,7 +89,11 @@ export default function Discover({ navigation }) {
     {
       id: 3,
       refId: 2,
-      img: require("../assets/glasses.png"),
+      imgs: [
+        require("../assets/clothingImages/jeans1.png"),
+        require("../assets/clothingImages/jeans2.png"),
+        require("../assets/clothingImages/jeans3.png"),
+      ],
       price: 130.0,
       clothingName: "Blue jeans",
       brand: "Brand1",
@@ -95,7 +108,11 @@ export default function Discover({ navigation }) {
     {
       id: 4,
       refId: 2,
-      img: require("../assets/glasses.png"),
+      imgs: [
+        require("../assets/clothingImages/blkJeans1.png"),
+        require("../assets/clothingImages/blkJeans2.png"),
+        require("../assets/clothingImages/blkJeans3.png"),
+      ],
       price: 125,
       clothingName: "Black jeans",
       brand: "Brand2",
@@ -110,7 +127,11 @@ export default function Discover({ navigation }) {
     {
       id: 5,
       refId: 2,
-      img: require("../assets/glasses.png"),
+      imgs: [
+        require("../assets/clothingImages/jorts1.png"),
+        require("../assets/clothingImages/jorts2.png"),
+        require("../assets/clothingImages/jorts3.png"),
+      ],
       price: 1205.0,
       clothingName: "Jorts",
       brand: "Brand3",
@@ -145,7 +166,7 @@ export default function Discover({ navigation }) {
           });
         }}
       >
-        <ImageBackground source={item.img} style={styles.clothesImage}>
+        <ImageBackground source={item.imgs[0]} style={styles.clothesImage}>
           <TouchableOpacity onPress={() => {}}>
             {/* will want to set it to make the heart red  */}
             <Ionicons name="heart-outline" size={24} color={colors.primary} />

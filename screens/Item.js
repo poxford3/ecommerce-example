@@ -27,6 +27,7 @@ export default function Item({ navigation, route }) {
   const [colorSelected, setColorSelected] = useState(null);
 
   const itemInfo = route.params.item;
+  // console.log(itemInfo);
 
   // objects
   const sizes = [
@@ -122,7 +123,7 @@ export default function Item({ navigation, route }) {
       {/* below needs to be a scrolling view with autolocking */}
       <View style={styles.imageList}>
         <ImageBackground
-          source={itemInfo.img}
+          source={itemInfo.imgs[0]}
           style={styles.images}
         ></ImageBackground>
       </View>
