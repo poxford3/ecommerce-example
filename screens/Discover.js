@@ -60,7 +60,20 @@ export default function Discover({ navigation }) {
       price: 160.0,
       clothingName: "Men Hoodie",
       brand: "Brand1",
-      colors: ["#ff0000", "#00ff00", "#0000ff"],
+      colors: [
+        {
+          id: 100,
+          colorX: "#ff0000",
+        },
+        {
+          id: 101,
+          colorX: "#00ff00",
+        },
+        {
+          id: 102,
+          colorX: "#0000ff",
+        },
+      ],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -76,7 +89,20 @@ export default function Discover({ navigation }) {
       price: 100.0,
       clothingName: "Autumn yellow hat",
       brand: "Brand1",
-      colors: ["#ff0000", "#00ff00", "#0000ff"],
+      colors: [
+        {
+          id: 100,
+          colorX: "#ff0000",
+        },
+        {
+          id: 101,
+          colorX: "#00ff00",
+        },
+        {
+          id: 102,
+          colorX: "#0000ff",
+        },
+      ],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -91,7 +117,20 @@ export default function Discover({ navigation }) {
       price: 130.0,
       clothingName: "Blue jeans",
       brand: "Brand1",
-      colors: ["#ff0000", "#00ff00", "#0000ff"],
+      colors: [
+        {
+          id: 100,
+          colorX: "#ff0000",
+        },
+        {
+          id: 101,
+          colorX: "#00ff00",
+        },
+        {
+          id: 102,
+          colorX: "#0000ff",
+        },
+      ],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -106,7 +145,20 @@ export default function Discover({ navigation }) {
       price: 125,
       clothingName: "Black jeans",
       brand: "Brand2",
-      colors: ["#ff0000", "#00ff00", "#0000ff"],
+      colors: [
+        {
+          id: 100,
+          colorX: "#ff0000",
+        },
+        {
+          id: 101,
+          colorX: "#00ff00",
+        },
+        {
+          id: 102,
+          colorX: "#0000ff",
+        },
+      ],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -121,7 +173,20 @@ export default function Discover({ navigation }) {
       price: 1205.0,
       clothingName: "Jorts",
       brand: "Brand3",
-      colors: ["#ff0000", "#00ff00", "#0000ff"],
+      colors: [
+        {
+          id: 100,
+          colorX: "#ff0000",
+        },
+        {
+          id: 101,
+          colorX: "#00ff00",
+        },
+        {
+          id: 102,
+          colorX: "#0000ff",
+        },
+      ],
       description: "This description is not as big as the rest.",
     },
   ];

@@ -67,15 +67,21 @@ export default function Item({ navigation, route }) {
     );
   };
 
-  const ColorListView = ({ color, borderWidth }) => {
+  const ColorListView = ({ item, borderWidth }) => {
     return (
       <TouchableOpacity
-        style={[
-          styles.colorCircle,
-          { backgroundColor: color, borderWidth: borderWidth },
-        ]}
-        onPress={() => setColorSelected(null)}
-      ></TouchableOpacity>
+        style={[styles.colorCircle, { borderWidth: borderWidth }]}
+        onPress={() => setColorSelected(item.id)}
+      >
+        <View
+          style={{
+            backgroundColor: item.colorX,
+            margin: 3,
+            flex: 1,
+            borderRadius: 15,
+          }}
+        ></View>
+      </TouchableOpacity>
     );
   };
 
@@ -97,7 +103,7 @@ export default function Item({ navigation, route }) {
   const renderColorList = ({ item }) => {
     const borderWidth = item.id == colorSelected ? 1 : null;
 
-    return <ColorListView color={item} borderWidth={borderWidth} />;
+    return <ColorListView item={item} borderWidth={borderWidth} />;
   };
 
   const moreLessFunc = () => {
@@ -127,7 +133,11 @@ export default function Item({ navigation, route }) {
           <Ionicons name="arrow-back" size={36} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{itemInfo.brand}</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Test");
+          }}
+        >
           <Ionicons name="basket-outline" size={36} />
         </TouchableOpacity>
       </View>
@@ -170,13 +180,7 @@ export default function Item({ navigation, route }) {
             data={colorList}
             scrollEnabled={false}
             horizontal={true}
-            renderItem={({ item }) => {
-              return (
-                <TouchableOpacity
-                  style={[styles.colorCircle, { backgroundColor: item }]}
-                ></TouchableOpacity>
-              );
-            }}
+            renderItem={renderColorList}
           />
         </View>
         <View style={styles.buttons}>
@@ -205,7 +209,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buyNowButton: {
-    width: 300,
+    // width: 300,
+    width: "80%",
     height: 50,
     marginHorizontal: 10,
     alignItems: "center",
@@ -213,10 +218,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black,
   },
   colorCircle: {
-    height: 24,
-    width: 24,
+    height: 30,
+    width: 30,
+    borderRadius: 15,
     margin: 7,
-    borderRadius: 12,
+    borderColor: colors.black,
+    // borderWidth: 1,
   },
   container: {
     flex: 1,
@@ -232,7 +239,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.lightgrey,
   },
   header: {
-    height: 100,
+    height: 90,
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
@@ -247,7 +254,7 @@ const styles = StyleSheet.create({
     // width: screenWidth,
   },
   imageList: {
-    height: 400,
+    height: 350,
   },
   info: {
     maxHeight: 150,

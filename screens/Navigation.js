@@ -9,6 +9,7 @@ import Item from "./Item";
 import Discover from "./Discover";
 import Settings from "./Settings";
 import Profile from "./Profile";
+import Test from "./Test";
 import colors from "../assets/colors";
 
 const Stack = createStackNavigator();
@@ -42,6 +43,7 @@ export function DrawNavigation() {
         <Drawer.Screen name="Discover" component={Discover} />
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="Settings" component={Settings} />
+        <Drawer.Screen name="Test" component={Test} />
         <Drawer.Screen
           name="Item"
           component={Item}
