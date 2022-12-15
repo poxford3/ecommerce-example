@@ -27,7 +27,7 @@ export default function Item({ navigation, route }) {
   const [colorSelected, setColorSelected] = useState(null);
 
   const itemInfo = route.params.item;
-  // console.log(itemInfo);
+  // console.log(itemInfo.colors);
 
   // objects
   const sizes = [
@@ -53,6 +53,8 @@ export default function Item({ navigation, route }) {
     },
   ];
 
+  const colorList = itemInfo.colors;
+
   // custom components
   const SizeListView = ({ item, backgroundColor, textColor }) => {
     return (
@@ -68,7 +70,10 @@ export default function Item({ navigation, route }) {
   const ColorListView = ({ color, borderWidth }) => {
     return (
       <TouchableOpacity
-        style={[styles.colorList, { color: color, borderWidth: borderWidth }]}
+        style={[
+          styles.colorCircle,
+          { backgroundColor: color, borderWidth: borderWidth },
+        ]}
         onPress={() => setColorSelected(null)}
       ></TouchableOpacity>
     );
@@ -87,6 +92,12 @@ export default function Item({ navigation, route }) {
         textColor={textColor}
       />
     );
+  };
+
+  const renderColorList = ({ item }) => {
+    const borderWidth = item.id == colorSelected ? 1 : null;
+
+    return <ColorListView color={item} borderWidth={borderWidth} />;
   };
 
   const moreLessFunc = () => {
@@ -155,7 +166,18 @@ export default function Item({ navigation, route }) {
             extraData={sizeSelected}
             renderItem={renderSizes}
           />
-          <FlatList data={itemInfo.colors} />
+          <FlatList
+            data={colorList}
+            scrollEnabled={false}
+            horizontal={true}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity
+                  style={[styles.colorCircle, { backgroundColor: item }]}
+                ></TouchableOpacity>
+              );
+            }}
+          />
         </View>
         <View style={styles.buttons}>
           <TouchableOpacity style={styles.favButton}>
@@ -190,11 +212,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: colors.black,
   },
-  colorList: {
-    height: 30,
-    width: 30,
-    borderRadius: 15,
-    borderColor: colors.black,
+  colorCircle: {
+    height: 24,
+    width: 24,
+    margin: 7,
+    borderRadius: 12,
   },
   container: {
     flex: 1,
@@ -239,7 +261,7 @@ const styles = StyleSheet.create({
     fontFamily: "Criteria-CF",
   },
   selections: {
-    marginTop: 20,
+    marginVertical: 10,
   },
   sizeList: {
     height: 40,

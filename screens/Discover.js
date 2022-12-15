@@ -8,11 +8,13 @@ import {
   Image,
   ImageBackground,
   FlatList,
+  ScrollView,
 } from "react-native";
 import { Dimensions } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import colors from "../assets/colors";
 import { useFonts } from "expo-font";
+import { Header } from "react-native/Libraries/NewAppScreen";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -58,11 +60,7 @@ export default function Discover({ navigation }) {
       price: 160.0,
       clothingName: "Men Hoodie",
       brand: "Brand1",
-      colors: {
-        red: "#ff0000",
-        green: "#00ff00",
-        blue: "#0000ff",
-      },
+      colors: ["#ff0000", "#00ff00", "#0000ff"],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -78,11 +76,7 @@ export default function Discover({ navigation }) {
       price: 100.0,
       clothingName: "Autumn yellow hat",
       brand: "Brand1",
-      colors: {
-        red: "#ff0000",
-        green: "#00ff00",
-        blue: "#0000ff",
-      },
+      colors: ["#ff0000", "#00ff00", "#0000ff"],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -97,11 +91,7 @@ export default function Discover({ navigation }) {
       price: 130.0,
       clothingName: "Blue jeans",
       brand: "Brand1",
-      colors: {
-        red: "#ff0000",
-        green: "#00ff00",
-        blue: "#0000ff",
-      },
+      colors: ["#ff0000", "#00ff00", "#0000ff"],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -116,11 +106,7 @@ export default function Discover({ navigation }) {
       price: 125,
       clothingName: "Black jeans",
       brand: "Brand2",
-      colors: {
-        red: "#ff0000",
-        green: "#00ff00",
-        blue: "#0000ff",
-      },
+      colors: ["#ff0000", "#00ff00", "#0000ff"],
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus sit amet luctus venenatis. Tincidunt dui ut ornare lectus sit. In iaculis nunc sed augue lacus viverra vitae. Eget arcu dictum varius duis at consectetur. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Diam maecenas sed enim ut. Facilisis leo vel fringilla est. Et netus et malesuada fames. Quis enim lobortis scelerisque fermentum dui faucibus in ornare. Elementum tempus egestas sed sed risus. Pretium fusce id velit ut. Nascetur ridiculus mus mauris vitae ultricies leo.",
     },
@@ -135,11 +121,7 @@ export default function Discover({ navigation }) {
       price: 1205.0,
       clothingName: "Jorts",
       brand: "Brand3",
-      colors: {
-        red: "#ff0000",
-        green: "#00ff00",
-        blue: "#0000ff",
-      },
+      colors: ["#ff0000", "#00ff00", "#0000ff"],
       description: "This description is not as big as the rest.",
     },
   ];
@@ -180,7 +162,7 @@ export default function Discover({ navigation }) {
     );
   };
 
-  const renderCat = ({ item }) => {
+  const renderCategory = ({ item }) => {
     const borderWidth = item.id === selectedId ? 2 : 0;
     const textColor = item.id === selectedId ? colors.black : colors.primary;
     // const borderWidth = item.id === selectedId ? 2 : 0;
@@ -194,6 +176,58 @@ export default function Discover({ navigation }) {
     );
   };
 
+  const HeaderSection = () => {
+    return (
+      <>
+        <View style={styles.header}>
+          <Text
+            style={{
+              fontSize: 30,
+              fontWeight: "bold",
+              fontFamily: "Criteria-CF",
+            }}
+          >
+            Discover
+          </Text>
+          <TouchableOpacity
+            style={styles.hamburger}
+            onPress={() => {
+              navigation.openDrawer();
+            }}
+          >
+            {/* <Ionicons name="menu-outline" size={50} /> */}
+            <View style={styles.hamurgerTopBot}></View>
+            <View style={styles.hamurgerMiddle}></View>
+            <View style={styles.hamurgerTopBot}></View>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.body}>
+          <ImageBackground
+            source={require("../assets/glasses.png")}
+            style={styles.glassesPic}
+          >
+            <View style={styles.imgTxt}>
+              <Text style={styles.imgTxtLg}>New Autumn</Text>
+              <Text style={styles.imgTxtLg}>2023 collection</Text>
+              <Text style={styles.imgTxtSm}>
+                Choose the perfect outfit in our app
+              </Text>
+            </View>
+          </ImageBackground>
+          <View style={styles.catList}>
+            <FlatList
+              data={categories}
+              renderItem={renderCategory}
+              extraData={selectedId}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+      </>
+    );
+  };
+
   const filteredClothes = clothesList.filter((x) => x.refId == selectedId);
 
   useEffect(() => {
@@ -202,58 +236,13 @@ export default function Discover({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text
-          style={{
-            fontSize: 30,
-            fontWeight: "bold",
-            fontFamily: "Criteria-CF",
-          }}
-        >
-          Discover
-        </Text>
-        <TouchableOpacity
-          style={styles.hamburger}
-          onPress={() => {
-            navigation.openDrawer();
-          }}
-        >
-          {/* <Ionicons name="menu-outline" size={50} /> */}
-          <View style={styles.hamurgerTopBot}></View>
-          <View style={styles.hamurgerMiddle}></View>
-          <View style={styles.hamurgerTopBot}></View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.body}>
-        <ImageBackground
-          source={require("../assets/glasses.png")}
-          style={styles.glassesPic}
-        >
-          <View style={styles.imgTxt}>
-            <Text style={styles.imgTxtLg}>New Autumn</Text>
-            <Text style={styles.imgTxtLg}>2023 collection</Text>
-            <Text style={styles.imgTxtSm}>
-              Choose the perfect outfit in our app
-            </Text>
-          </View>
-        </ImageBackground>
-        <View style={styles.catList}>
-          <FlatList
-            data={categories}
-            renderItem={renderCat}
-            extraData={selectedId}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
-        <View style={styles.clothingOptionsView}>
-          <FlatList
-            data={filteredClothes}
-            numColumns={2}
-            renderItem={({ item }) => <ClothingItem item={item} />}
-          />
-        </View>
-      </View>
+      <FlatList
+        data={filteredClothes}
+        numColumns={2}
+        ListHeaderComponent={HeaderSection}
+        scrollEnabled={true}
+        renderItem={({ item }) => <ClothingItem item={item} />}
+      />
     </SafeAreaView>
   );
 }
