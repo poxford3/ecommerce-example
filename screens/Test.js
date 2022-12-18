@@ -9,6 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { Dimensions } from "react-native";
+import colors from "../assets/colors";
 
 export default function Test({ navigation }) {
   const screenHeight = Dimensions.screenHeight;
@@ -27,11 +28,11 @@ export default function Test({ navigation }) {
           snapToInterval={400}
           decelerationRate={0}
           snapToAlignment={"center"}
-          contentInset={{ top: 400, bottom: 400, right: 0, left: 0 }}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item, index }) => {
             return (
               <ImageBackground source={item} style={styles.images}>
-                <Text>{index}</Text>
+                <Text style={styles.testText}>{index}</Text>
               </ImageBackground>
             );
           }}
@@ -53,8 +54,18 @@ const styles = StyleSheet.create({
     width: 400,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: colors.white,
   },
   imageHolder: {
+    borderWidth: 1,
+    borderRadius: 1,
+    borderColor: colors.black,
+    backgroundColor: colors.primary,
     height: 400,
+  },
+  testText: {
+    position: "absolute",
+    // top: 0,
+    // left: 0,
   },
 });
