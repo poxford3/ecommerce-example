@@ -20,6 +20,8 @@ const screenWidth = Dimensions.get("window").width;
 
 export default function Discover({ navigation }) {
   const [selectedId, setSelectedId] = useState(1);
+  const [heartColor, setHeartColor] = useState(colors.primary);
+  const [heartIcon, setHeartIcon] = useState("heart-outline");
 
   const [fontsLoaded] = useFonts({
     "Criteria-CF": require("../assets/fonts/criteria-cf-bold.otf"),
@@ -214,9 +216,19 @@ export default function Discover({ navigation }) {
         }}
       >
         <ImageBackground source={item.imgs[0]} style={styles.clothesImage}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            onPress={() => {
+              if (heartColor == colors.primary) {
+                setHeartColor(colors.red);
+                setHeartIcon("heart");
+              } else {
+                setHeartColor(colors.primary);
+                setHeartIcon("heart-outline");
+              }
+            }}
+          >
             {/* will want to set it to make the heart red  */}
-            <Ionicons name="heart-outline" size={24} color={colors.primary} />
+            <Ionicons name={heartIcon} size={24} color={heartColor} />
           </TouchableOpacity>
         </ImageBackground>
         <Text style={styles.clothesText}>{item.clothingName}</Text>
@@ -305,6 +317,7 @@ export default function Discover({ navigation }) {
         data={filteredClothes}
         numColumns={2}
         ListHeaderComponent={HeaderSection}
+        // StickyHeaderComponent={HeaderSection}
         scrollEnabled={true}
         renderItem={({ item }) => <ClothingItem item={item} />}
       />

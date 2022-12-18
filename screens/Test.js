@@ -25,7 +25,7 @@ export default function Test({ navigation }) {
         <FlatList
           data={images}
           disableIntervalMomentum={true}
-          snapToInterval={400}
+          snapToInterval={400} // this number is the height of the view
           decelerationRate={0}
           snapToAlignment={"center"}
           showsVerticalScrollIndicator={false}
@@ -38,7 +38,6 @@ export default function Test({ navigation }) {
           }}
         />
       </View>
-      <Text>Test</Text>
     </SafeAreaView>
   );
 }

@@ -25,6 +25,8 @@ export default function Item({ navigation, route }) {
   const [numDescriptionLines, setNumDescriptionLines] = useState(3);
   const [scrollEnabling, setScrollEnabling] = useState(false);
   const [colorSelected, setColorSelected] = useState(null);
+  const [heartColor, setHeartColor] = useState(colors.primary);
+  const [heartIcon, setHeartIcon] = useState("heart-outline");
 
   const itemInfo = route.params.item;
   // console.log(itemInfo.colors);
@@ -54,6 +56,7 @@ export default function Item({ navigation, route }) {
   ];
 
   const colorList = itemInfo.colors;
+  const imgList = itemInfo.imgs;
 
   // custom components
   const SizeListView = ({ item, backgroundColor, textColor }) => {
@@ -135,18 +138,36 @@ export default function Item({ navigation, route }) {
         <Text style={styles.headerText}>{itemInfo.brand}</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Test");
+            // navigation.navigate("Test");
           }}
         >
           <Ionicons name="basket-outline" size={36} />
         </TouchableOpacity>
       </View>
-      {/* below needs to be a scrolling view with autolocking */}
       <View style={styles.imageList}>
-        <ImageBackground
+        <FlatList
+          data={imgList}
+          disableIntervalMomentum={true}
+          snapToInterval={350} // this number is the height of the view
+          decelerationRate={0}
+          snapToAlignment={"center"}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item, index }) => {
+            return (
+              <ImageBackground
+                source={item}
+                style={styles.images}
+                resizeMode={"contain"}
+              >
+                {/* <Text style={styles.testText}>{index}</Text> */}
+              </ImageBackground>
+            );
+          }}
+        />
+        {/* <ImageBackground
           source={itemInfo.imgs[0]}
           style={styles.images}
-        ></ImageBackground>
+        ></ImageBackground> */}
       </View>
       <View style={styles.body}>
         <View style={styles.desrciption}>
@@ -184,8 +205,19 @@ export default function Item({ navigation, route }) {
           />
         </View>
         <View style={styles.buttons}>
-          <TouchableOpacity style={styles.favButton}>
-            <Ionicons name="heart-outline" size={35} color={colors.grey} />
+          <TouchableOpacity
+            style={styles.favButton}
+            onPress={() => {
+              if (heartColor == colors.primary) {
+                setHeartColor(colors.red);
+                setHeartIcon("heart");
+              } else {
+                setHeartColor(colors.primary);
+                setHeartIcon("heart-outline");
+              }
+            }}
+          >
+            <Ionicons name={heartIcon} size={35} color={heartColor} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.buyNowButton}>
             <Text style={{ color: colors.white, fontFamily: "Criteria-CF" }}>
@@ -250,7 +282,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   images: {
-    height: "100%",
+    height: 350,
     // width: screenWidth,
   },
   imageList: {
