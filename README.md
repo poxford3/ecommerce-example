@@ -20,4 +20,4 @@ This project is a proof of concept from an [inspiration website](https://dribbbl
 
 ### Items selectable, such as favorites, sizes, and colors
 
-<img src="/assets/git_imgs/selected_item.png" alt="Splash View" height=200>
+<img src="/assets/git_imgs/selected_item2.png" alt="Splash View" height=200>
