@@ -4,4 +4,20 @@ This project is a proof of concept from an [inspiration website](https://dribbbl
 
 ### Screenshots of app:
 
-<- to come ->
+##### Splash Screen:
+
+<img src="/assets/git_imgs/splash_screen.png" alt="Splash View" height=200>
+
+##### Discover page:
+
+<img src="/assets/git_imgs/discover1.png" alt="Splash View" height=200>
+
+##### On item selection:
+
+##### First look on load, loads images and possible colors
+
+<img src="/assets/git_imgs/selected_item.png" alt="first View when item selected" height=200>
+
+##### Items selectable, such as favorites, sizes, and colors
+
+<img src="/assets/git_imgs/selected_item.png" alt="Splash View" height=200>
